@@ -46,10 +46,6 @@ const App = (props) => {
       name: 'Laboratory',
       icon: <ImLab {...iconStyle} />,
     }, {
-      id: 5,
-      name: 'Messaging',
-      icon: <AiOutlineMessage {...iconStyle} />,
-    }, {
       id: 6,
       name: 'OT/Labour Room',
       icon: <FiActivity {...iconStyle} />,
@@ -62,11 +58,7 @@ const App = (props) => {
       name: 'Indoor',
       icon: <IoMdBed {...iconStyle} />,
     },
-    {
-      id: 9,
-      name: 'Minor OT',
-      icon: <IoBandage {...iconStyle} />,
-    },
+
   ];
 
   const links = [

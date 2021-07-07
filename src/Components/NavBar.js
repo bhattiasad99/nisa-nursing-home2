@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { FaUserCircle } from 'react-icons/fa';
 import { HiBell } from 'react-icons/hi'
 import styles from './NavBar.module.css'
+import { AiOutlineMessage } from 'react-icons/ai'
 
 const drawerWidth = 240;
 
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
             width: `calc(100% - ${drawerWidth}px)`,
             marginLeft: drawerWidth,
         },
-        background: 'none',
+        background: 'white',
         boxShadow: 'none',
         color: 'black'
     },
@@ -30,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     navBar: {
         display: 'flex',
         width: '100%',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-end',
         alignItems: 'center',
     },
     icons: {
@@ -80,13 +81,16 @@ function NavBar(props) {
                         <MenuIcon />
                     </IconButton>
                     <div className={classes.navBar}>
-                        <Typography variant="h5">{props.panelHeader}</Typography>
+
                         <div className={classes.icons}>
                             <span className={styles.uHoverEffect}>
                                 <div className={classes.notificationBox}>
                                     <HiBell size="22" />
                                     {notifications > 0 && <span className={classes.notification}>{notifications}</span>}
                                 </div>
+                            </span>
+                            <span className={styles.uHoverEffect}>
+                                <AiOutlineMessage />
                             </span>
                             <span className={styles.uHoverEffect}>
                                 <FaUserCircle />

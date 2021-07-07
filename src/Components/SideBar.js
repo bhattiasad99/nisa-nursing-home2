@@ -2,13 +2,12 @@ import React from 'react';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import MailIcon from '@material-ui/icons/Mail';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { Typography } from '@material-ui/core'
 
 const drawerWidth = 240;
 
@@ -33,7 +32,9 @@ const useStyles = makeStyles((theme) => ({
         width: drawerWidth,
         background: 'white',
         color: 'black'
-    }
+    },
+    toolbar: theme.mixins.toolbar,
+
 }));
 
 function SideDrawer(props) {
@@ -47,7 +48,15 @@ function SideDrawer(props) {
 
     const drawer = (
         <div>
-            <div className={classes.toolbar} />
+            <div className={classes.toolbar} style={
+                {
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                }
+            }>
+                <Typography variant="h5">{props.panelHeader}</Typography>
+            </div>
             <Divider />
             <List>
                 {props.controls.map((obj) => (

@@ -25,9 +25,9 @@ function AppContent(props) {
             <CssBaseline />
             <NavBar
                 drawerToggle={handleDrawerToggle}
-                panelHeader={props.UIPanel}
-            />
+                />
             <SideBar
+                panelHeader={props.UIPanel}
                 drawerToggle={handleDrawerToggle}
                 mobileToggleState={mobileOpen}
                 controls={props.sideBarControls}
