@@ -1,3 +1,7 @@
 .uHoverEffect:hover {
     cursor: pointer
 }
+
+.uHoverEffect {
+    position: relative
+}

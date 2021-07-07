@@ -9,6 +9,7 @@ import Content from './Content'
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
+        justifyContent: 'center'
     },
     toolbar: theme.mixins.toolbar,
 }));
@@ -25,7 +26,7 @@ function AppContent(props) {
             <CssBaseline />
             <NavBar
                 drawerToggle={handleDrawerToggle}
-                />
+            />
             <SideBar
                 panelHeader={props.UIPanel}
                 drawerToggle={handleDrawerToggle}

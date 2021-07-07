@@ -1,10 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import HomePage from './HomePage/HomePage'
+
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-    },
+
     content: {
         flexGrow: 1,
         padding: theme.spacing(3),
@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         justifyContent: 'stretch',
         alignItems: 'stretch',
+        minWidth: '75vw',
     },
     mainCenter: {
         minHeight: '65vh'
@@ -30,11 +31,9 @@ function Content(props) {
             {/* Material Component */}
             <main className={classes.content}>
                 <div className={classes.toolbar} />
-                <div className={classes.mainCenter}>
-
-                </div>
+                <HomePage />
             </main>
-        </div>
+        </div >
     );
 }
 

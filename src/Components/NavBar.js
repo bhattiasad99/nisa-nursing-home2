@@ -66,6 +66,7 @@ const useStyles = makeStyles((theme) => ({
 function NavBar(props) {
     const classes = useStyles();
     const [notifications, setNotifications] = React.useState(3)
+    const [messageNotification, setMessageNotification] = React.useState(2)
 
     return (
         <React.Fragment>
@@ -81,7 +82,6 @@ function NavBar(props) {
                         <MenuIcon />
                     </IconButton>
                     <div className={classes.navBar}>
-
                         <div className={classes.icons}>
                             <span className={styles.uHoverEffect}>
                                 <div className={classes.notificationBox}>
@@ -91,6 +91,7 @@ function NavBar(props) {
                             </span>
                             <span className={styles.uHoverEffect}>
                                 <AiOutlineMessage />
+                                {messageNotification > 0 && <span className={classes.notification}>{messageNotification}</span>}
                             </span>
                             <span className={styles.uHoverEffect}>
                                 <FaUserCircle />
