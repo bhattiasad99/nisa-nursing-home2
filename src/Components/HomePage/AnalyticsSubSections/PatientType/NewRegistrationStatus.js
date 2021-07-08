@@ -1,8 +1,8 @@
 import React from 'react'
 
-const NewRegistrationStatus = () => {
+const NewRegistrationStatus = (props) => {
     return (
-        <div style={{ background: 'red' }}>
+        <div className={props.baseStyle}>
             new reg
         </div>
     )

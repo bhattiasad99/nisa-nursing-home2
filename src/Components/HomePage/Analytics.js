@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import CashFlowStatus from './AnalyticsSubSections/CashFlowStatus'
 import CheckupType from './AnalyticsSubSections/CheckupType'
 import PatientType from './AnalyticsSubSections/PatientType'
@@ -15,6 +15,8 @@ const useStyles = makeStyles(
 
 const Analytics = (props) => {
     const classes = useStyles()
+
+
     return (
         <section className={classes.analytics}>
             <Grid container spacing={3}>
@@ -26,11 +28,11 @@ const Analytics = (props) => {
                     <CheckupType baseStyle={props.baseStyleOfCard} />
                 </Grid>
                 {/* flex list of new registrations and follow ups */}
-                <Grid item xs={3} baseStyle={props.baseStyleOfCard}>
-                    <PatientType />
+                <Grid item xs={3} >
+                    <PatientType baseStyle={props.baseStyleOfCard} />
                 </Grid>
-                <Grid item xs={3} baseStyle={props.baseStyleOfCard}>
-                    <DailyIncome />
+                <Grid item xs={3} >
+                    <DailyIncome baseStyle={props.baseStyleOfCard} />
                 </Grid>
             </Grid>
         </section>

@@ -1,8 +1,8 @@
 import React from 'react'
 
-const DailyIncome = () => {
+const DailyIncome = (props) => {
     return (
-        <div style={{ background: 'red' }}>
+        <div className={props.baseStyle}>
             daily income
 
         </div>

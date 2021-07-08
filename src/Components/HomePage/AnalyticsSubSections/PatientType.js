@@ -5,17 +5,15 @@ import { Grid } from '@material-ui/core'
 
 const PatientType = (props) => {
     return (
-        <div style={{ background: 'red' }}>
-            patient type
-            <Grid container spacing={3}>
-                <Grid item xs={12}>
-                    <FollowUpCheckUpStatus />
-                </Grid>
-                <Grid item xs={12}>
-                    <NewRegistrationStatus />
-                </Grid>
+
+        <Grid container spacing={3}>
+            <Grid item xs={12}>
+                <FollowUpCheckUpStatus baseStyle={props.baseStyle} />
             </Grid>
-        </div>
+            <Grid item xs={12}>
+                <NewRegistrationStatus baseStyle={props.baseStyle} />
+            </Grid>
+        </Grid>
     )
 }
 

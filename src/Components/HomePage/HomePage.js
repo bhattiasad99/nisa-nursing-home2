@@ -1,39 +1,66 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Analytics from './Analytics'
 import PatientQueue from './PatientQueue'
-import PrintQueue from './PrintQueue'
 import { Grid, makeStyles } from '@material-ui/core'
+import Card from './Card.js'
+
 const useStyles = makeStyles(
     {
-        card: {
+        wrapper:
+        {
+            minHeight: '90vh',
+            width: '75vw',
+        },
+        card:
+        {
             marginTop: '2rem',
             borderRadius: '10px',
             background: 'white',
             boxShadow: '0px 0px 5px 0px rgb(0 0 0 / 14%)',
-            height: '100%'
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'stretch',
+            justifyContent: 'center',
+            padding: '10px'
         }
     }
 )
 
+const mainCards = [
+    {
+        id: 0,
+        props: {
+            name: "Patient Queue",
+            headings: ['Patient Name', 'ID', 'Queue Number', 'Service', 'Doctor Name'],
+        }
+    },
+    {
+        id: 1,
+        props: {
+            name: 'Print Queue',
+            headings: ['Patient Name', 'ID', 'Doctor Name', 'Service', 'Payment Status', 'Discount Approved'],
+        }
+    }
+]
+
 const HomePage = (props) => {
+    // const [activePatients, setActivePatients] = useState([])
+    // useEffect(() => {
+    //     setActivePatients(DUMMY_PATIENTS)
+    // }, [activePatients])
+    // console.log(activePatients, 'dummy patient data')
+
     const classes = useStyles()
 
     return (
-        <Grid container spacing={3} style={
-            {
-                minHeight: '90vh'
-            }
-        }>
-            <Grid item xs={12}>
-                <PatientQueue baseStyleOfCard={classes.card} />
-            </Grid>
-            <Grid item xs={12}>
-                <PrintQueue baseStyleOfCard={classes.card} />
-            </Grid>
-            <Grid xs={12} item>
-                <Analytics baseStyleOfCard={classes.card} />
-            </Grid>
-        </Grid >
+        <div className={classes.wrapper}>
+            {mainCards.map(card => {
+                return (
+                    <Card styles={classes.card} key={card.id} {...card.props} />
+                )
+            })}
+        </div>
     )
 }
 

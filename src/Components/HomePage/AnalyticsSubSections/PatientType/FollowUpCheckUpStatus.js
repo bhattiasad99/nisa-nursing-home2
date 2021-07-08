@@ -1,8 +1,8 @@
 import React from 'react'
 
-const FollowUpCheckUpStatus = () => {
+const FollowUpCheckUpStatus = (props) => {
     return (
-        <div style={{ background: 'red' }}>
+        <div className={props.baseStyle}>
             follow up check up
         </div>
     )
