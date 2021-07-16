@@ -10,7 +10,7 @@ import { IoBandage } from 'react-icons/io5'
 import { FiActivity, FiGrid } from 'react-icons/fi'
 import { BsGraphUp, BsCalendar, BsClipboardData } from 'react-icons/bs'
 import { IoSettings } from 'react-icons/io5'
-
+import { Link } from 'react-router-dom'
 
 
 
@@ -19,14 +19,14 @@ const App = (props) => {
 
   const iconStyle = {
     fontSize: '20px',
-    // color: '#660000'
   }
 
   const linksControls = [
     {
       id: 0,
       name: 'Home',
-      icon: <FiGrid {...iconStyle} />
+      icon: <FiGrid {...iconStyle} />,
+      path: '/home'
     },
     {
       id: 1,

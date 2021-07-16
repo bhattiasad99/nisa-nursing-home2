@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import Analytics from './Analytics'
-import PatientQueue from './PatientQueue'
 import { Grid, makeStyles } from '@material-ui/core'
 import Card from './Card.js'
+import FooterLinks from './FooterLinks'
+
+import DUMMY_PATIENTS from '../../globalContent/DummyPatients'
 
 const useStyles = makeStyles(
     {
@@ -10,6 +11,10 @@ const useStyles = makeStyles(
         {
             minHeight: '90vh',
             width: '75vw',
+            display: 'flex',
+            alignItems: 'stretch',
+            justifyContent: 'stretch',
+            flexDirection: 'column',
         },
         card:
         {
@@ -17,49 +22,101 @@ const useStyles = makeStyles(
             borderRadius: '10px',
             background: 'white',
             boxShadow: '0px 0px 5px 0px rgb(0 0 0 / 14%)',
-            height: '100%',
+            height: 'fit-content',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'stretch',
-            justifyContent: 'center',
-            padding: '10px'
+            justifyContent: 'space-between',
+            padding: '0.9rem 10px 0.2rem 10px',
+
+        },
+        headingBox: {
+            display: 'flex',
+            width: '100%',
+            justifyContent: 'space-between',
+            alignItems: 'center',
         }
     }
 )
 
-const mainCards = [
-    {
-        id: 0,
-        props: {
-            name: "Patient Queue",
-            headings: ['Patient Name', 'ID', 'Queue Number', 'Service', 'Doctor Name'],
-        }
-    },
-    {
-        id: 1,
-        props: {
-            name: 'Print Queue',
-            headings: ['Patient Name', 'ID', 'Doctor Name', 'Service', 'Payment Status', 'Discount Approved'],
-        }
-    }
-]
+
 
 const HomePage = (props) => {
-    // const [activePatients, setActivePatients] = useState([])
-    // useEffect(() => {
-    //     setActivePatients(DUMMY_PATIENTS)
-    // }, [activePatients])
-    // console.log(activePatients, 'dummy patient data')
+    const [activePatients, setActivePatients] = useState([])
+
+
+    useEffect(() => {
+        setActivePatients(DUMMY_PATIENTS)
+    }, [setActivePatients])
+
+    const waitingPatients = activePatients.filter(patient => !patient.checkup)
+    const pendingPrescriptions = activePatients.filter(patient => patient.awaitingPrescription)
+
+    const cardData = [
+        {
+            id: 0,
+            props: {
+                name: "Checkup Queue",
+                headings:
+                    [
+                        {
+                            name: 'Patient Name',
+                            shortName: 'name'
+                        }, {
+                            name: 'patientID',
+                            shortName: 'patientID'
+                        }, {
+                            name: 'Queue Number',
+                            shortName: 'queue'
+                        }, {
+                            name: 'Service',
+                            shortName: 'service'
+                        }, {
+                            name: 'Doctor Name',
+                            shortName: 'doctor'
+                        }
+                    ],
+                patientList: waitingPatients,
+            }
+        },
+        {
+            id: 1,
+            props: {
+                name: 'Prescriptions Waiting',
+                headings: [{
+                    name: 'Patient Name',
+                    shortName: 'name'
+                }, {
+                    name: 'ID',
+                    shortName: 'patientID'
+                }, {
+                    name: 'Doctor Name',
+                    shortName: 'doctor'
+                }, {
+                    name: 'Service',
+                    shortName: 'service'
+                }, {
+                    name: 'Payment Status',
+                    shortName: 'paid'
+                }, {
+                    name: 'Discount Approved',
+                    shortName: 'discount'
+                }],
+                patientList: pendingPrescriptions
+            }
+        }
+    ]
 
     const classes = useStyles()
 
     return (
         <div className={classes.wrapper}>
-            {mainCards.map(card => {
+            {cardData.map(card => {
                 return (
-                    <Card styles={classes.card} key={card.id} {...card.props} />
+                    <Card styles={classes.card} headingBoxStyle={classes.headingBox} key={card.id} {...card.props} />
                 )
             })}
+            <FooterLinks cardStyles={classes.card} headingBoxStyle={classes.headingBox} />
         </div>
     )
 }

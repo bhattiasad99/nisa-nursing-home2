@@ -20,7 +20,6 @@ function AppContent(props) {
         setMobileOpen(!mobileOpen);
     };
     const classes = useStyles();
-    console.log('testing in appcontent', props)
     return (
         <div className={classes.root}>
             <CssBaseline />
