@@ -1,6 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import HomePage from './HomePage/HomePage'
+import HomePage from './Pages/HomePage/HomePage'
+import { Switch, Route } from 'react-router-dom'
+import Registration from './Pages/Registration/Registration'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -28,11 +30,18 @@ function Content(props) {
 
     return (
         <div className={classes.root}>
-            {/* Material Component */}
-            <main className={classes.content}>
-                <div className={classes.toolbar} />
-                <HomePage />
-            </main>
+            <Switch>
+                {/* Material Component */}
+                <main className={classes.content}>
+                    <div className={classes.toolbar} />
+                    <Route path="/home">
+                        <HomePage />
+                    </Route>
+                    <Route path="/registration">
+                        <Registration />
+                    </Route>
+                </main>
+            </Switch>
         </div >
     );
 }

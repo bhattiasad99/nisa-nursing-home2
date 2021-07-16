@@ -10,7 +10,7 @@ import { IoBandage } from 'react-icons/io5'
 import { FiActivity, FiGrid } from 'react-icons/fi'
 import { BsGraphUp, BsCalendar, BsClipboardData } from 'react-icons/bs'
 import { IoSettings } from 'react-icons/io5'
-import { Link } from 'react-router-dom'
+
 
 
 
@@ -26,37 +26,44 @@ const App = (props) => {
       id: 0,
       name: 'Home',
       icon: <FiGrid {...iconStyle} />,
-      path: '/home'
+      path: '/home',
     },
     {
       id: 1,
       name: 'Registration',
       icon: <FaUserPlus {...iconStyle} />,
+      path: '/registration',
     },
     {
       id: 2,
       name: 'Checkup',
       icon: <FaCalendarPlus {...iconStyle} />,
+      path: '/appointment',
     }, {
       id: 3,
       name: 'Emergency',
       icon: <FaCreativeCommonsSamplingPlus {...iconStyle} />,
+      path: '/emergency',
     }, {
       id: 4,
       name: 'Laboratory',
       icon: <ImLab {...iconStyle} />,
+      path: '/lab',
     }, {
       id: 6,
       name: 'OT/Labour Room',
       icon: <FiActivity {...iconStyle} />,
+      path: '/procedure',
     }, {
       id: 7,
       name: 'Purchase',
       icon: <FaMoneyCheckAlt {...iconStyle} />,
+      path: '/inventory',
     }, {
       id: 8,
       name: 'Indoor',
       icon: <IoMdBed {...iconStyle} />,
+      path: '/indoor',
     },
 
   ];

@@ -7,7 +7,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core'
+import { Typography, MenuItem, Menu } from '@material-ui/core'
+import { Link } from 'react-router-dom'
 
 const drawerWidth = 240;
 
@@ -60,22 +61,26 @@ function SideDrawer(props) {
             <Divider />
             <List>
                 {props.controls.map((obj) => (
-                    <ListItem button key={obj.id}>
-                        <ListItemIcon>{obj.icon}</ListItemIcon>
-                        <ListItemText primary={obj.name} />
-                    </ListItem>
+                    <MenuItem to={obj.path} component={Link} exact>
+                        <ListItem button key={obj.id}>
+                            <ListItemIcon>{obj.icon}</ListItemIcon>
+                            <ListItemText primary={obj.name} />
+                        </ListItem>
+                    </MenuItem>
                 ))}
             </List>
             <Divider />
             <List>
                 {props.links.map((obj) => (
                     <ListItem button key={obj.id}>
-                        <ListItemIcon>{obj.icon}</ListItemIcon>
-                        <ListItemText primary={obj.name} />
+                        <MenuItem component={Link} to={obj.path} exact>
+                            <ListItemIcon>{obj.icon}</ListItemIcon>
+                            <ListItemText primary={obj.name} />
+                        </MenuItem>
                     </ListItem>
                 ))}
             </List>
-        </div>
+        </div >
     );
 
     const container = window !== undefined ? () => window().document.body : undefined;

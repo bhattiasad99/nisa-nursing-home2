@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core'
 import classes from './FooterBox.module.css'
-import DoughnutChart from '../DoughnutChart'
+import DoughnutChart from '../../DoughnutChart'
 import { MdOpenInNew } from 'react-icons/md'
 
 const useStyles = makeStyles(theme => ({

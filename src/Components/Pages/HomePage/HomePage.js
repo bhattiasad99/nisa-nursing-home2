@@ -3,7 +3,7 @@ import { Grid, makeStyles } from '@material-ui/core'
 import Card from './Card.js'
 import FooterLinks from './FooterLinks'
 
-import DUMMY_PATIENTS from '../../globalContent/DummyPatients'
+import DUMMY_PATIENTS from '../../../globalContent/DummyPatients'
 
 const useStyles = makeStyles(
     {
