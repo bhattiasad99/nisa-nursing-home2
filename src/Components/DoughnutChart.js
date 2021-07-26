@@ -14,7 +14,6 @@ const DoughnutChart = (props) => {
         if (tempState !== undefined) {
             console.log(tempState.values)
             const entriesArr = Object.entries(tempState.values)
-            console.log(entriesArr)
             entriesArr.forEach(entry => keysArr.push(entry[0]))
             entriesArr.forEach(entry => valsArr.push(entry[1]))
             setLabels(keysArr)

@@ -203,9 +203,7 @@ const DUMMY_PATIENTS = [
         checkup: false,
         awaitingPrescription: false,
         discount: null,
-
     },
-
     {
         checkupId: '0013',
         patientID: '0014',
@@ -220,7 +218,6 @@ const DUMMY_PATIENTS = [
         checkup: false,
         awaitingPrescription: false,
         discount: null,
-
     },
 
     {
@@ -237,9 +234,7 @@ const DUMMY_PATIENTS = [
         checkup: false,
         awaitingPrescription: false,
         discount: null,
-
     },
-
     {
         checkupId: '0015',
         patientID: '0016',

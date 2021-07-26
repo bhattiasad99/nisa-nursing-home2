@@ -6,9 +6,13 @@ export default createMuiTheme(
             primary: {
                 main: '#6200EE'
             },
-            secondary: {
-                main: '#03DAC6'
-            }
         },
+        typography: {
+            h4: {
+                fontWeight: '300',
+                letterSpacing: '1px',
+                padding: '1rem',
+            }
+        }
     }
 )

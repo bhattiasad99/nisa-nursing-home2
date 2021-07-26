@@ -4,46 +4,12 @@ import Card from './Card.js'
 import FooterLinks from './FooterLinks'
 
 import DUMMY_PATIENTS from '../../../globalContent/DummyPatients'
+import homePageStyles from './homePageStyles.js'
 
-const useStyles = makeStyles(
-    {
-        wrapper:
-        {
-            minHeight: '90vh',
-            width: '75vw',
-            display: 'flex',
-            alignItems: 'stretch',
-            justifyContent: 'stretch',
-            flexDirection: 'column',
-        },
-        card:
-        {
-            marginTop: '2rem',
-            borderRadius: '10px',
-            background: 'white',
-            boxShadow: '0px 0px 5px 0px rgb(0 0 0 / 14%)',
-            height: 'fit-content',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'stretch',
-            justifyContent: 'space-between',
-            padding: '0.9rem 10px 0.2rem 10px',
-
-        },
-        headingBox: {
-            display: 'flex',
-            width: '100%',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-        }
-    }
-)
-
-
+const useStyles = makeStyles(homePageStyles)
 
 const HomePage = (props) => {
     const [activePatients, setActivePatients] = useState([])
-
 
     useEffect(() => {
         setActivePatients(DUMMY_PATIENTS)
@@ -51,6 +17,8 @@ const HomePage = (props) => {
 
     const waitingPatients = activePatients.filter(patient => !patient.checkup)
     const pendingPrescriptions = activePatients.filter(patient => patient.awaitingPrescription)
+
+    const classes = useStyles()
 
     const cardData = [
         {
@@ -107,7 +75,6 @@ const HomePage = (props) => {
         }
     ]
 
-    const classes = useStyles()
 
     return (
         <div className={classes.wrapper}>

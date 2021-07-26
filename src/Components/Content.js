@@ -1,8 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import HomePage from './Pages/HomePage/HomePage'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, withRouter } from 'react-router-dom'
 import Registration from './Pages/Registration/Registration'
+import PatientCheckup from './Pages/PatientCheckup/PatientCheckup'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -40,12 +41,15 @@ function Content(props) {
                     <Route path="/registration">
                         <Registration />
                     </Route>
+                    <Route path="/appointment">
+                        <PatientCheckup />
+                    </Route>
                 </main>
             </Switch>
         </div >
     );
 }
 
-
-export default Content;
+// with router
+export default withRouter(Content);
 

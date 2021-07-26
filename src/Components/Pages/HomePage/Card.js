@@ -22,6 +22,7 @@ const Card = (props) => {
         headingsArr: [],
         patients: []
     })
+    console.log(data)
     useEffect(() => {
         const temp = { ...props }
         setData({
@@ -32,9 +33,11 @@ const Card = (props) => {
     }, [props, setData])
 
     return (
+        // use material table
         <div className={props.styles} >
             <div className={props.headingBoxStyle}>
                 <Typography variant="h6" className={classes.heading}>
+                    {/* mistake: set props into state, omit that */}
                     {data.name}
                 </Typography><MdOpenInNew style={{ color: 'blue' }} /></div>
             <QueueTable headings={data.headingsArr} patients={data.patients} />
