@@ -38,7 +38,7 @@ const App = (props) => {
       id: 2,
       name: 'Checkup',
       icon: <FaCalendarPlus {...iconStyle} />,
-      path: '/appointment',
+      path: '/get-appointment',
     }, {
       id: 3,
       name: 'Emergency',

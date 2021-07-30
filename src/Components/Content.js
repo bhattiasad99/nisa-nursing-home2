@@ -1,13 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import HomePage from './Pages/HomePage/HomePage'
 import { Switch, Route, withRouter } from 'react-router-dom'
+import HomePage from './Pages/HomePage/HomePage'
 import Registration from './Pages/Registration/Registration'
-import PatientCheckup from './Pages/PatientCheckup/PatientCheckup'
-
+import GetAppointment from './Pages/GetAppointment/GetAppointment';
 
 const useStyles = makeStyles((theme) => ({
-
     content: {
         flexGrow: 1,
         padding: theme.spacing(3),
@@ -23,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     mainCenter: {
         minHeight: '65vh'
     },
-    toolbar: theme.mixins.toolbar
+    toolbar: theme.mixins.toolbar,
 }));
 
 function Content(props) {
@@ -35,14 +33,14 @@ function Content(props) {
                 {/* Material Component */}
                 <main className={classes.content}>
                     <div className={classes.toolbar} />
-                    <Route path="/home">
+                    <Route path="/home" exact>
                         <HomePage />
                     </Route>
-                    <Route path="/registration">
+                    <Route path="/registration" exact>
                         <Registration />
                     </Route>
-                    <Route path="/appointment">
-                        <PatientCheckup />
+                    <Route path="/get-appointment" exact>
+                        <GetAppointment />
                     </Route>
                 </main>
             </Switch>

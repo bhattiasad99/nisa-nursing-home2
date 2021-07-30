@@ -12,6 +12,10 @@ export default createMuiTheme(
                 fontWeight: '300',
                 letterSpacing: '1px',
                 padding: '1rem',
+            },
+            h6: {
+                marginBottom: '0.5rem',
+                fontSize: '1rem',
             }
         }
     }

@@ -1,8 +1,8 @@
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
-import NavBar from './NavBar'
-import SideBar from './SideBar'
+import NavBar from './ui/NavBar'
+import SideBar from './ui/SideBar'
 import Content from './Content'
 
 
