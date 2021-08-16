@@ -21,6 +21,10 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
   },
+  "engines": {
+    "node": "12.18.3",
+    "npm": "12.18.3"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
