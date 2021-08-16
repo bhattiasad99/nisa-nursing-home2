@@ -62,8 +62,8 @@ export default {
         ref: 'gender',
         props: {
             heading: 'Gender',
-            values: ['Male', 'Female', 'Other'],
-            label: 'Gender',
+            values: [{ label: 'Male', value: 'male' }, { label: 'Female', value: 'female' }, { label: 'Other', value: 'other' }],
+            label: 'Select Gender',
         },
         required: true,
         type: 'drop-down',

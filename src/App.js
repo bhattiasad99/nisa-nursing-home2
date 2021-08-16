@@ -4,15 +4,12 @@ import { ThemeProvider } from '@material-ui/core'
 import theme from './Components/ui/theme'
 import { FaUserPlus, FaCalendarPlus, FaCreativeCommonsSamplingPlus, FaMoneyCheckAlt } from 'react-icons/fa'
 import { ImLab } from 'react-icons/im'
-import { AiOutlineMessage } from 'react-icons/ai'
 import { IoMdBed } from 'react-icons/io'
-import { IoBandage } from 'react-icons/io5'
 import { FiActivity, FiGrid } from 'react-icons/fi'
 import { BsGraphUp, BsCalendar, BsClipboardData } from 'react-icons/bs'
 import { IoSettings } from 'react-icons/io5'
-
-
-
+import { Switch, Route } from 'react-router-dom'
+import Login from './Components/Pages/Login/Login'
 
 const App = (props) => {
   const [panelName, setPanelName] = useState("Reception Panel")
@@ -28,22 +25,23 @@ const App = (props) => {
       icon: <FiGrid {...iconStyle} />,
       path: '/home',
     },
+    // {
+    //   id: 1,
+    //   name: 'Registration',
+    //   icon: <FaUserPlus {...iconStyle} />,
+    //   path: '/registration',
+    // },
+    // {
+    //   id: 2,
+    //   name: 'Checkup',
+    //   icon: <FaCalendarPlus {...iconStyle} />,
+    //   path: '/get-appointment',
+    // },
     {
-      id: 1,
-      name: 'Registration',
-      icon: <FaUserPlus {...iconStyle} />,
-      path: '/registration',
-    },
-    {
-      id: 2,
-      name: 'Checkup',
-      icon: <FaCalendarPlus {...iconStyle} />,
-      path: '/get-appointment',
-    }, {
       id: 3,
-      name: 'Emergency',
+      name: 'New Patient',
       icon: <FaCreativeCommonsSamplingPlus {...iconStyle} />,
-      path: '/emergency',
+      path: '/new-patient',
     }, {
       id: 4,
       name: 'Laboratory',
@@ -94,7 +92,12 @@ const App = (props) => {
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
-        <AppContent UIPanel={panelName} sideBarControls={linksControls} links={links} />
+        <Switch>
+          <Route path="/user-auth-login">
+            <Login />
+          </Route>
+          <AppContent UIPanel={panelName} sideBarControls={linksControls} links={links} />
+        </Switch>
       </ThemeProvider>
     </React.Fragment>
   )

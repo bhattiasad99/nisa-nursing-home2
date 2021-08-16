@@ -2,8 +2,12 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Switch, Route, withRouter } from 'react-router-dom'
 import HomePage from './Pages/HomePage/HomePage'
-import Registration from './Pages/Registration/Registration'
-import GetAppointment from './Pages/GetAppointment/GetAppointment';
+import Registration from './Pages/NewPatient/Registration/Registration'
+import GetAppointment from './Pages/NewPatient/GetAppointment/GetAppointment';
+import NewPatient from './Pages/NewPatient/NewPatient'
+import Lab from './Pages/Lab/Lab'
+import PageNotFound from './Pages/PageNotFound'
+import Test from './Test'
 
 const useStyles = makeStyles((theme) => ({
     content: {
@@ -24,9 +28,34 @@ const useStyles = makeStyles((theme) => ({
     toolbar: theme.mixins.toolbar,
 }));
 
-function Content(props) {
-    const classes = useStyles();
+const paths = [
+    {
+        path: '/home'
+    },
+    {
+        path: '/registration'
+    },
+    {
+        path: '/get-appointment'
+    },
+    {
+        path: '/emergency'
+    },
+    {
+        path: '/lab'
+    },
+]
 
+const throw_error = (user_path) => {
+    const link = paths.find(path => path.path === user_path)
+    if (!link) {
+        return '/404'
+    }
+}
+
+function Content(props) {
+
+    const classes = useStyles();
     return (
         <div className={classes.root}>
             <Switch>
@@ -41,6 +70,18 @@ function Content(props) {
                     </Route>
                     <Route path="/get-appointment" exact>
                         <GetAppointment />
+                    </Route>
+                    <Route path="/new-patient" exact>
+                        <NewPatient />
+                    </Route>
+                    <Route path="/lab" exact>
+                        <Lab />
+                    </Route>
+                    <Route path="/404" exact>
+                        <PageNotFound />
+                    </Route>
+                    <Route path="/testing" exact>
+                        <Test />
                     </Route>
                 </main>
             </Switch>

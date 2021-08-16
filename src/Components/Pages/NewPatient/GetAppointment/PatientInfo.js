@@ -11,7 +11,6 @@ const useStyles = makeStyles({
         width: '100%',
         alignItems: 'center',
         justifyContent: 'space-between',
-
     }
 })
 
@@ -22,7 +21,7 @@ const PatientInfo = ({ patient }) => {
     console.log(patient)
     return (
         <div className={classes.root}>
-            {refs.map(reference => (
+            {patient && refs.map(reference => (
                 <div className={classes.row}>
                     <span className={classes.headings}>
                         <Typography variant="h6">

@@ -4,7 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import NavBar from './ui/NavBar'
 import SideBar from './ui/SideBar'
 import Content from './Content'
-
+import { Switch, Route, Redirect } from 'react-router-dom'
+import Login from './Pages/Login/Login'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -22,6 +23,9 @@ function AppContent(props) {
     const classes = useStyles();
     return (
         <div className={classes.root}>
+            <Route exact path="/">
+                <Redirect to="/user-auth-login" />
+            </Route>
             <CssBaseline />
             <NavBar
                 drawerToggle={handleDrawerToggle}

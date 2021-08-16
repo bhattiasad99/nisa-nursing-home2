@@ -5,7 +5,7 @@ import Grid from '../../ui/Grid'
 import cards from './objects/cardData'
 
 
-const Testing = props => {
+const HomePage = props => {
     // use this for non dynamic styles inside React comp
     const classes = useStyles()
     return (
@@ -20,9 +20,9 @@ const Testing = props => {
                     </div>
                 ))}
             </Grid>
-            
+
         </div>
     )
 }
 
-export default Testing
+export default HomePage

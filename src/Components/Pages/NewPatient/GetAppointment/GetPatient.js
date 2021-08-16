@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import AutoCompleteComp from '../../ui/AutoCompleteComp'
-import dummyRegistrations from '../../../globalContent/dummyRegistrations'
-import { Button } from '@material-ui/core'
+import AutoCompleteComp from '../../../ui/AutoCompleteComp'
+import dummyRegistrations from '../../../../globalContent/dummyRegistrations'
+import { TextField, Button } from '@material-ui/core'
 import useStyles from './GetPatient.style'
+import BasicTableComp from '../../../ui/BasicTableComp'
 
 const searchTypes = [{ name: 'Name', ref: 'fullName' }, { name: 'CNIC', ref: 'cnic' }, { name: 'Contact', ref: 'contact' }]
 const searchSuggestions = ['Name', 'CNIC', 'Contact']
@@ -13,8 +14,7 @@ const GetPatient = ({ getPatient }) => {
     const [searchTypeSelected, setSearchTypeSelected] = useState()
     const [showRegistered, setShowRegistered] = useState(false)
     const [patientsArr, setPatientsArr] = useState([])
-    const [showBtn, setShowBtn] = useState(false)
-    const [patient, setPatient] = useState()
+    const [showTable, setShowTable] = useState(false)
 
     const classes = useStyles()
     useEffect(() => {
@@ -30,6 +30,7 @@ const GetPatient = ({ getPatient }) => {
                 })
             }
         }
+        setShowTable(false)
     }, [searchTypeSelected])
 
 
@@ -39,35 +40,31 @@ const GetPatient = ({ getPatient }) => {
             setSearchTypeSelected(temp)
             setShowRegistered(true)
         } else {
-            setSearchTypeSelected('none')
+            setSearchTypeSelected(null)
             setShowRegistered(false)
         }
     }
 
-    const selectPatientHandler = userChoice => {
-        setShowBtn(false)
-        const retrievePatient = registered.find(patient => (patient[searchTypeSelected.ref] === userChoice))
-        if (retrievePatient) {
-            setShowBtn(true)
-            setPatient(retrievePatient)
+    const searchClickHandler = e => {
+        e.preventDefault()
+        console.log(e.target, 'clicked')
+        if (!showTable) {
+            setShowTable(true)
         }
     }
-
-    const btnClickHandler = e => {
-        e.preventDefault()
-        getPatient(patient)
-    }
-
     return (
-        <div>
+        <div className={classes.container}>
             <div style={{ marginBottom: '1rem' }}>
                 <AutoCompleteComp suggestions={searchSuggestions} label="Search By..." onSelect={selectValueHandler} />
             </div>
-
-            <div>
-                {showRegistered && <AutoCompleteComp suggestions={patientsArr} onSelect={selectPatientHandler} label={`Search by ${searchTypeSelected.name}`} />}
-            </div>
-            {showBtn && <div className={classes.BtnContainer}><Button variant="outlined" color="primary" onClick={btnClickHandler} >Find Patient Record</Button></div>}
+            {console.log(searchTypeSelected)}
+            {searchTypeSelected && (<React.Fragment>
+                <TextField label={`Search by ${searchTypeSelected.name}`} variant="outlined" />
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '1rem' }}>
+                    <Button variant="outlined" color="primary" onClick={searchClickHandler}>Search Patient</Button>
+                </div>
+            </React.Fragment>)}
+            {showTable && <BasicTableComp />}
         </div>
     )
 }

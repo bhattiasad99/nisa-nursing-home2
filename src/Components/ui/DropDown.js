@@ -1,53 +1,53 @@
-import React from 'react'
-import { Select, MenuItem, makeStyles, InputLabel, FormControl } from '@material-ui/core'
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
 
-const useStyles = makeStyles(theme => (
-    {
-        formControl: {
+const useStyles = makeStyles((theme) => ({
+    root: {
+        '& .MuiTextField-root': {
             margin: theme.spacing(1),
-            minWidth: '10rem'
         },
-        container: {
-            display: 'flex',
-            alignItems: 'center',
-            marginLeft: '7px',
-        }
+    },
+    container: {
+        display: 'flex',
+        alignItems: 'center',
+        height: '100%',
+        justifyContent: 'flex-start',
+        width: '100%',
+        padding: '1rem',
+    },
+    input: {
+        width: '100%'
     }
-))
+}))
 
-const DropDown = ({ heading, values, label }) => {
-    const classes = useStyles()
-    const [age, setAge] = React.useState('');
+export default function MultilineTextFields({ heading, values, label }) {
+    const classes = useStyles();
+    const [value, setValue] = React.useState();
 
     const handleChange = (event) => {
-        setAge(event.target.value);
+        setValue(event.target.value);
     };
-    console.log('props', heading, values, label)
+
     return (
         <div className={classes.container}>
-            <FormControl variant="outlined" className={classes.formControl}>
-                <InputLabel id="demo-simple-select-outlined-label">{heading}</InputLabel>
-                <Select
-                    labelId="demo-simple-select-outlined-label"
-                    id="demo-simple-select-outlined"
-                    value={age}
-                    onChange={handleChange}
-                    label="Age"
-                >
-                    <MenuItem value="">
-                        <em>Select Gender</em>
-                    </MenuItem>
-                    {values.map(value => {
-                        console.log(value)
-                        return (
-                            <MenuItem value={value}>{value}</MenuItem>
-                        )
-                    })}
-
-                </Select>
-            </FormControl>
+            <TextField
+                className={classes.input}
+                id="outlined-select"
+                select
+                label={label}
+                value={value}
+                onChange={handleChange}
+                variant="outlined"
+            >
+                {values.map((option) => {
+                    return (<MenuItem key={option.value} value={option.value}>
+                        {option.label}
+                    </MenuItem>)
+                }
+                )}
+            </TextField>
         </div>
-    )
+    );
 }
-
-export default DropDown

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import DUMMY_PATIENTS from '../../../../globalContent/DummyPatients'
-import TableComp from '../../../ui/TableComp'
 
 // 2 problems: 
 // // weird harkatein by the console logging shit
@@ -44,7 +43,8 @@ const QueueTable = ({ headings }) => {
     // }
     return (
         <div>
-            <TableComp headings={headings} data={tableData} />
+            Queue Table
+            {/* <TableComp headings={headings} data={tableData} /> */}
         </div>
     )
 }

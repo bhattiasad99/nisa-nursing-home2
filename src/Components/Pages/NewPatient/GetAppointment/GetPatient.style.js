@@ -6,6 +6,12 @@ const useStyles = makeStyles({
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: '1rem'
+    },
+    container: {
+        display: 'flex',
+        flexDirection: "column",
+        alignItems: 'stretch',
+        justifyContent: 'space-between',
     }
 })
 

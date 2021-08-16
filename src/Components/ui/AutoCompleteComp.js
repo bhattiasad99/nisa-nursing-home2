@@ -3,6 +3,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles } from '@material-ui/core/styles';
+import { useAutocomplete } from '@material-ui/lab';
 
 const useStyles = makeStyles({
     option: {
@@ -37,6 +38,7 @@ const AutoCompleteComp = ({ suggestions, onSelect, label, ...otherProps }) => {
             )}
             renderInput={(params) => (
                 <TextField
+
                     {...params}
                     label={label}
                     variant="outlined"

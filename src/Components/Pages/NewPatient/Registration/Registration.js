@@ -1,24 +1,50 @@
-import React from 'react'
-import Card from '../../ui/Card'
+import React, { useState, useEffect } from 'react'
+import Card from '../../../ui/Card'
 import form_data from './form_data'
 import useStyles from './Registration.style'
 import TextField from '@material-ui/core/TextField';
-import Form from '../../ui/Form'
-import DropDown from '../../ui/DropDown'
-import BtnList from '../../ui/BtnList'
+import Form from '../../../ui/Form'
+import DropDown from '../../../ui/DropDown'
+import BtnList from '../../../ui/BtnList'
+import { useHistory } from 'react-router-dom'
 
 
 const Testing = (props) => {
+    const [formData, setformData] = useState(
+        {
+            id: '',
+            firstName: '',
+            lastName: '',
+            email: '',
+            contact: '',
+            city: '',
+            gender: '',
+            timeOfReg: '',
+            cnic: '',
+            biometric: '',
+        }
+    )
+    useEffect(() => {
+
+    }, [])
+    let history = useHistory()
+    const changeValueHandler = (e, obj) => {
+        let temp = { ...formData }
+        temp[obj.ref] = e.target.value
+        setformData(temp)
+    }
     const buttons = [
         {
             id: 'primary',
             name: 'Register',
-            action: () => { console.log('Register') }
+            action: () => { console.log('Register', formData) }
         },
         {
             id: 'secondary',
             name: 'Cancel',
-            action: () => { console.log('Cancel') }
+            action: () => {
+                history.push('/home')
+            }
         }]
 
     const classes = useStyles()
@@ -35,6 +61,7 @@ const Testing = (props) => {
                             } else {
                                 return (
                                     <TextField
+                                        onChange={(event) => changeValueHandler(event, form_element)}
                                         id="outlined-basic"
                                         className={classes.inputField}
                                         label={form_element.label}

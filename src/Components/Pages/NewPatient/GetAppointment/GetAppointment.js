@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
-import Card from '../../ui/Card'
+import Card from '../../../ui/Card'
 import useStyles from './GetAppointment.style'
 import GetPatient from './GetPatient'
 import PatientInfo from './PatientInfo'
+
+import Registration from '../../NewPatient/Registration/Registration'
+import BackDrop from '../../../ui/BackDropComp'
 
 const GetAppointment = (props) => {
     const [patient, setPatient] = useState()
@@ -23,6 +26,9 @@ const GetAppointment = (props) => {
                     <PatientInfo patient={patient} />
                 </Card>
             </div>
+            <BackDrop label={'Register'}>
+                <Registration />
+            </BackDrop>
         </div>
     )
 }
