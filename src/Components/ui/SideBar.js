@@ -93,8 +93,8 @@ function SideDrawer(props) {
                     container={container}
                     variant="temporary"
                     anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-                    open={mobileOpen}
-                    onClose={handleDrawerToggle}
+                    open={props.mobileToggleState}
+                    onClose={props.drawerToggle}
                     classes={{
                         paper: classes.drawerPaper,
                     }}

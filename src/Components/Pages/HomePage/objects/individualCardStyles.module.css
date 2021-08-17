@@ -1,24 +1,11 @@
-.gridQueueTable {
-    grid-row: 1/2;
-    grid-column: 1/4;
+.smallCard {
+    margin: 0.3rem;
 }
 
-.gridPrescriptions {
-    grid-row: 2/3;
-    grid-column: 1/4;
+.bigCard {
+    margin-bottom: 1rem;
 }
 
-.cashFlow {
-    grid-row: 3/4;
-    grid-column: 1/2;
-}
-
-.checkUpTypes {
-    grid-row: 3/4;
-    grid-column: 2/3;
-}
-
-.patientTypes {
-    grid-row: 3/4;
-    grid-column: 3/4;
+.smallCardsContainer {
+    width: 100%;
 }

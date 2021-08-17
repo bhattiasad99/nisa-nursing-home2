@@ -1,24 +1,63 @@
 import React from 'react'
 import Card from '../../ui/Card'
 import useStyles from './HomePage.styles.js'
-import Grid from '../../ui/Grid'
-import cards from './objects/cardData'
+import Grid from '../../ui/GridComp/GridComp'
 
+import styles from './objects/individualCardStyles.module.css'
+
+import CashFlow from './CashFlow/CashFlow'
+import CheckupTypes from './CheckupTypes/CheckupTypes'
+import PatientTypes from './PatientTypes/PatientTypes'
+import QueueTable from './QueueTable/QueueTable'
+
+import cashFlowData from './CashFlow/objects/cashFlowData'
+import checkuptypesData from './CheckupTypes/objects/checkupTypesData'
+import patientTypesData from './PatientTypes/objects/patientTypesData'
+import queueTableData from './QueueTable/objects/queueTableData'
 
 const HomePage = props => {
-    // use this for non dynamic styles inside React comp
     const classes = useStyles()
+    const buttonsArr = [{ id: 0, name: 'Current' }, { id: 1, name: '24 Hours' }]
     return (
         <div>
-            <Grid gridTemplate={classes.gridTemplate}>
-                {cards.map(card => (
-                    // applied dynamic css (not jss) styles in exported document
-                    <div className={card.styles} style={{ padding: '0.4rem' }}>
-                        <Card heading={card.heading}>
-                            {card.content}
+            <Grid container style={{ padding: '1rem' }}>
+                <Grid item xs={12}>
+                    <div className={styles.bigCard}>
+                        <Card heading='Queue Table'>
+                            <QueueTable {...queueTableData} />
                         </Card>
                     </div>
-                ))}
+                </Grid>
+                <Grid item xs={12} styles={styles.gridPrescriptions}>
+                    <div className={styles.bigCard}>
+                        <Card heading='Prescriptions'>
+                            Prescriptions
+                        </Card>
+                    </div>
+                </Grid>
+                <Grid container xs className={styles.smallCardsContainer} >
+                    <Grid item md={4} xs={12} >
+                        <div className={styles.smallCard} >
+                            <Card heading='Cash Flow'>
+                                <CashFlow {...cashFlowData} buttonsArr={buttonsArr} />
+                            </Card>
+                        </div>
+                    </Grid>
+                    <Grid item md={4} xs={6}>
+                        <div className={styles.smallCard} >
+                            <Card heading='Checkup Types'>
+                                <CheckupTypes {...checkuptypesData} buttonsArr={buttonsArr} />
+                            </Card>
+                        </div>
+                    </Grid>
+                    <Grid item md={4} xs={6}>
+                        <div className={styles.smallCard}>
+                            <Card heading='Patient Types'>
+                                <PatientTypes {...patientTypesData} buttonsArr={buttonsArr} />
+                            </Card>
+                        </div>
+                    </Grid>
+                </Grid>
             </Grid>
 
         </div>
