@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 export const useStyles = bgColor => {
-    return makeStyles(() => ({
+    return makeStyles((theme) => ({
         root: {
             flexGrow: 1,
             backgroundColor: bgColor,
@@ -13,6 +13,9 @@ export const useStyles = bgColor => {
         item: {
             display: 'flex',
             alignItems: 'center',
+        },
+        control: {
+            padding: theme.spacing(2),
         },
     }));
 };

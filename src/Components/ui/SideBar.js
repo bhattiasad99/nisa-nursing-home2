@@ -9,7 +9,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Typography, MenuItem, Menu } from '@material-ui/core'
 import { Link } from 'react-router-dom'
-
+import { Button } from '@material-ui/core'
+import Switch from './SwitchComp'
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -47,6 +48,10 @@ function SideDrawer(props) {
         setMobileOpen(!mobileOpen);
     };
 
+    const changeThemeHandler = event => {
+        props.isDarkMode(event)
+    }
+
     const drawer = (
         <div>
             <div className={classes.toolbar} style={
@@ -80,6 +85,8 @@ function SideDrawer(props) {
                     </ListItem>
                 ))}
             </List>
+            <Divider />
+            <Switch result={changeThemeHandler} />
         </div >
     );
 

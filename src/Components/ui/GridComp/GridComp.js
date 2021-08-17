@@ -23,10 +23,13 @@ export default function CenteredGrid({ children, bgColor, xsSize, item, styles, 
 }
 
 CenteredGrid.propTypes = {
-    children: PropTypes.any,
     bgColor: PropTypes.string,
-    xsSize: PropTypes.string,
-};
+    children: PropTypes.any,
+    item: PropTypes.bool,
+    spacing: PropTypes.any,
+    styles: PropTypes.any,
+    xsSize: PropTypes.string
+}
 CenteredGrid.defaultProps = {
     children: <div>Default Children</div>,
     // xsSize: 12,

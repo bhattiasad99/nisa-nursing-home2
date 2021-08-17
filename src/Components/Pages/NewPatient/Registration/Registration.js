@@ -43,7 +43,7 @@ const Testing = (props) => {
             id: 'secondary',
             name: 'Cancel',
             action: () => {
-                history.push('/home')
+                console.log('Cancel')
             }
         }]
 

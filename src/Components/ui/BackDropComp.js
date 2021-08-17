@@ -33,7 +33,7 @@ export default function TransitionsModal({ label, children }) {
 
     return (
         <div>
-            <Button variant="outlined" color="primary" onClick={handleOpen}>
+            <Button variant="outlined" color="primary" onClick={handleOpen} style={{ margin: '1rem' }}>
                 {label}
             </Button>
             <Modal

@@ -20,8 +20,8 @@ const useStyles = makeStyles(() => (
         },
         btnFooter: {
             display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-end',
+            flexDirection: 'column !important',
+            alignItems: 'flex-end !important',
         },
         openBtn: {
             '&:hover': {
