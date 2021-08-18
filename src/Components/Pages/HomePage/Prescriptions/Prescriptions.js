@@ -16,7 +16,7 @@ const QueueTable = ({ patients }) => {
 
     useEffect(() => {
         const temp = [...patients]
-        const queuedPatients = temp.filter(patient => (patient.awaitingCheckUp))
+        const queuedPatients = temp.filter(patient => (patient.awaitingPrescription))
         setPatientsData({
             headings: TABLE_HEADINGS,
             rows: queuedPatients

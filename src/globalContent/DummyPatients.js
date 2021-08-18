@@ -13,6 +13,7 @@ const DUMMY_PATIENTS = [
         checkup: true,
         awaitingPrescription: true,
         discount: null,
+        awaitingCheckUp: false,
     },
     {
         checkupId: '0001',
@@ -28,6 +29,7 @@ const DUMMY_PATIENTS = [
         checkup: true,
         awaitingPrescription: true,
         discount: null,
+        awaitingCheckUp: false,
     },
     {
         checkupId: '0002',
@@ -43,6 +45,7 @@ const DUMMY_PATIENTS = [
         checkup: true,
         awaitingPrescription: false,
         discount: null,
+        awaitingCheckUp: false,
     },
     {
         checkupId: '0003',
@@ -58,6 +61,7 @@ const DUMMY_PATIENTS = [
         checkup: true,
         awaitingPrescription: false,
         discount: null,
+        awaitingCheckUp: true,
     },
     {
         checkupId: '0004',
@@ -73,6 +77,7 @@ const DUMMY_PATIENTS = [
         checkup: true,
         awaitingPrescription: false,
         discount: null,
+        awaitingCheckUp: true,
 
     },
     {
@@ -89,6 +94,7 @@ const DUMMY_PATIENTS = [
         checkup: false,
         awaitingPrescription: false,
         discount: null,
+        awaitingCheckUp: true,
 
     },
     {
@@ -105,6 +111,7 @@ const DUMMY_PATIENTS = [
         checkup: false,
         awaitingPrescription: false,
         discount: null,
+        awaitingCheckUp: true,
 
     },
     {
@@ -121,6 +128,7 @@ const DUMMY_PATIENTS = [
         checkup: false,
         awaitingPrescription: false,
         discount: null,
+        awaitingCheckUp: true,
 
     },
     {
@@ -137,6 +145,7 @@ const DUMMY_PATIENTS = [
         checkup: false,
         awaitingPrescription: false,
         discount: null,
+        awaitingCheckUp: true,
 
     },
     {
@@ -153,6 +162,7 @@ const DUMMY_PATIENTS = [
         checkup: false,
         awaitingPrescription: false,
         discount: null,
+        awaitingCheckUp: true,
 
     },
 
@@ -170,6 +180,7 @@ const DUMMY_PATIENTS = [
         checkup: false,
         awaitingPrescription: false,
         discount: null,
+        awaitingCheckUp: true,
 
     },
     {
@@ -186,6 +197,7 @@ const DUMMY_PATIENTS = [
         checkup: false,
         awaitingPrescription: false,
         discount: null,
+        awaitingCheckUp: true,
 
     },
 
@@ -203,6 +215,7 @@ const DUMMY_PATIENTS = [
         checkup: false,
         awaitingPrescription: false,
         discount: null,
+        awaitingCheckUp: true,
     },
     {
         checkupId: '0013',
@@ -218,6 +231,7 @@ const DUMMY_PATIENTS = [
         checkup: false,
         awaitingPrescription: false,
         discount: null,
+        awaitingCheckUp: true,
     },
 
     {
@@ -234,6 +248,7 @@ const DUMMY_PATIENTS = [
         checkup: false,
         awaitingPrescription: false,
         discount: null,
+        awaitingCheckUp: true,
     },
     {
         checkupId: '0015',
@@ -249,9 +264,8 @@ const DUMMY_PATIENTS = [
         checkup: false,
         awaitingPrescription: false,
         discount: null,
-
+        awaitingCheckUp: true,
     },
-
 ]
 
 

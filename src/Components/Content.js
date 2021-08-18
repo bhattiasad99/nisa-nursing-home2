@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     content: {
         flexGrow: 1,
         padding: theme.spacing(3),
+        margin: '1rem',
         position: 'relative',
         minHeight: '100vh',
         padding: '0',

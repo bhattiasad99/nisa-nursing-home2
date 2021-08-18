@@ -3,7 +3,7 @@ import AutoCompleteComp from '../../../ui/AutoCompleteComp'
 import dummyRegistrations from '../../../../globalContent/dummyRegistrations'
 import { TextField, Button } from '@material-ui/core'
 import useStyles from './GetPatient.style'
-import BasicTableComp from '../../../ui/BasicTableComp'
+import Table from '../../../ui/MaterialTable'
 
 const searchTypes = [{ name: 'Name', ref: 'fullName' }, { name: 'CNIC', ref: 'cnic' }, { name: 'Contact', ref: 'contact' }]
 const searchSuggestions = ['Name', 'CNIC', 'Contact']
@@ -64,7 +64,7 @@ const GetPatient = ({ getPatient }) => {
                     <Button variant="outlined" color="primary" onClick={searchClickHandler}>Search Patient</Button>
                 </div>
             </React.Fragment>)}
-            {showTable && <BasicTableComp />}
+            {showTable && <Table />}
         </div>
     )
 }

@@ -1,49 +1,50 @@
-import React, { Component, useState, useEffect } from "react";
-import MaterialTable from "material-table";
-import { makeStyles } from '@material-ui/core'
-import { Paper } from '@material-ui/core';
+import PropTypes from "prop-types";
+import React, { useState, useEffect } from 'react'
+import MaterialTable from 'material-table'
 
-const useStyles = makeStyles({
-})
-
-
-const MaterialTableComp = props => {
-    const [renderData, setRenderData] = useState([])
-
-    console.log('in table', props)
+const TableComp = ({ data, table_name, ...otherProps }) => {
+    const [tableData, setTableData] = useState([])
+    const [headings, setHeadings] = useState([])
     useEffect(() => {
-        setRenderData(props.tableData)
-    }, [props])
-    const classes = useStyles()
+        setHeadings(data.headings)
+        setTableData(data.rows)
+    }, [data])
+
     return (
-        <div style={{ maxWidth: "100%" }}>
-            {/* removes box shadow */}
-            <MaterialTable
-                components={{
-                    Container: props => <Paper {...props} elevation={0} />
-                }}
-                columns={[...props.headings]}
-                // columns={[
-                //     { title: "Name", field: "name" },
-                //     { title: "SirName", field: "surname" },
-                //     { title: "Birth Year", field: "birthYear", type: "numeric" },
-                //     {
-                //         title: "Birth City",
-                //         field: "birthCity",
-                //         lookup: { 34: "İstanbul", 63: "Şanlıurfa" },
-                //     },
-                // ]}
-                data={renderData}
-                title={null}
-            />
-            {/*  {title: "Patient Name", field: "name"}
-1: {title: "patientID", field: "patientID", type: "numeric"}
-2: {title: "Queue Number", field: "queue", type: "numeric"}
-3: {title: "Service", field: "service"}
-4: {title: "Doctor Name", field: "doctor"} */}
-        </div>
-    );
+        <React.Fragment>
+            <div style={{ maxWidth: '100%' }}>
+                <MaterialTable
+                    {...otherProps}
+                    columns={headings}
+                    data={tableData}
+                    title={table_name}
+                />
+            </div>
+        </React.Fragment>
+    )
 }
 
+TableComp.propTypes = {
+    data: PropTypes.shape({
+        headings: PropTypes.array,
+        rows: PropTypes.array
+    }),
+    field: PropTypes.string,
+    headings: PropTypes.array,
+    rows: PropTypes.array,
+    table_name: PropTypes.string,
+    title: PropTypes.string
+}
 
-export default MaterialTableComp
+export default TableComp
+
+TableComp.defaultProps = {
+    table_name: 'No Name Given',
+    data: {
+        headings: [
+            { title: '', field: '' },
+            { title: '', field: '' },
+        ],
+        rows: [],
+    }
+}

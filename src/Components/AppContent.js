@@ -49,41 +49,57 @@ function AppContent(props) {
     const theme = createTheme(
         {
             palette: {
-                type: darkMode ? 'dark' : 'light'
+                primary: {
+                    main: '#6200EE',
+                    type: darkMode ? 'dark' : 'light'
+                },
+            },
+            typography: {
+                h4: {
+                    fontWeight: '300',
+                    letterSpacing: '1px',
+                    padding: '1rem',
+                },
+                h6: {
+                    marginBottom: '0.5rem',
+                    fontSize: '1rem',
+                }
             }
         }
     )
     const classes = useStyles();
     return (
-        <Paper style={{ height: '130vh', background: '#FAFAFA', minHeight: 'fit-content', positive: 'relative' }}>
-            <div className={classes.root}>
-                <Route exact path="/">
-                    <Redirect to="/user-auth-login" />
-                </Route>
-                <CssBaseline />
-                <NavBar
-                    drawerToggle={handleDrawerToggle}
-                />
-                <SideBar
-                    isDarkMode={changeThemeHandler}
-                    panelHeader={props.UIPanel}
-                    drawerToggle={handleDrawerToggle}
-                    mobileToggleState={mobileOpen}
-                    controls={props.sideBarControls}
-                    links={props.links}
-                />
-                <div className={classes.toolbar} />
-                <Content />
-            </div>
-            <div className={classes.footer}>
-                <div>
-                    Powered by: Asad Zubair Bhatti
+        <ThemeProvider theme={theme}>
+            <Paper style={{ height: '130vh', background: '#FAFAFA', minHeight: 'fit-content', positive: 'relative', boxShadow: 'none' }}>
+                <div className={classes.root}>
+                    <Route exact path="/">
+                        <Redirect to="/user-auth-login" />
+                    </Route>
+                    <CssBaseline />
+                    <NavBar
+                        drawerToggle={handleDrawerToggle}
+                    />
+                    <SideBar
+                        isDarkMode={changeThemeHandler}
+                        panelHeader={props.UIPanel}
+                        drawerToggle={handleDrawerToggle}
+                        mobileToggleState={mobileOpen}
+                        controls={props.sideBarControls}
+                        links={props.links}
+                    />
+                    <div className={classes.toolbar} />
+                    <Content />
                 </div>
-                <div>
-                    Contact: 0334-8506479
+                <div className={classes.footer}>
+                    <div>
+                        Powered by: Asad Zubair Bhatti
+                    </div>
+                    <div>
+                        Contact: 0334-8506479
+                    </div>
                 </div>
-            </div>
-        </Paper>
+            </Paper>
+        </ThemeProvider>
     );
 }
 

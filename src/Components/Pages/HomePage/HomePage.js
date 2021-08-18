@@ -3,17 +3,19 @@ import Card from '../../ui/Card'
 import useStyles from './HomePage.styles.js'
 import Grid from '../../ui/GridComp/GridComp'
 
+import APPOINTMENTS from '../../../globalContent/DummyPatients'
+
 import styles from './objects/individualCardStyles.module.css'
 
 import CashFlow from './CashFlow/CashFlow'
 import CheckupTypes from './CheckupTypes/CheckupTypes'
 import PatientTypes from './PatientTypes/PatientTypes'
 import QueueTable from './QueueTable/QueueTable'
+import Prescriptions from './Prescriptions/Prescriptions'
 
 import cashFlowData from './CashFlow/objects/cashFlowData'
 import checkuptypesData from './CheckupTypes/objects/checkupTypesData'
 import patientTypesData from './PatientTypes/objects/patientTypesData'
-import queueTableData from './QueueTable/objects/queueTableData'
 
 const HomePage = props => {
     const classes = useStyles()
@@ -24,17 +26,19 @@ const HomePage = props => {
                 <Grid item xs={12}>
                     <div className={styles.bigCard}>
                         <Card heading='Queue Table'>
-                            <QueueTable {...queueTableData} />
+                            <QueueTable patients={APPOINTMENTS} />
                         </Card>
                     </div>
                 </Grid>
+
                 <Grid item xs={12} styles={styles.gridPrescriptions}>
                     <div className={styles.bigCard}>
                         <Card heading='Prescriptions'>
-                            Prescriptions
+                            <Prescriptions patients={APPOINTMENTS} />
                         </Card>
                     </div>
                 </Grid>
+
                 <Grid container xs className={styles.smallCardsContainer} >
                     <Grid item md={4} xs={12} >
                         <div className={styles.smallCard} >
@@ -43,6 +47,7 @@ const HomePage = props => {
                             </Card>
                         </div>
                     </Grid>
+
                     <Grid item md={4} xs={6}>
                         <div className={styles.smallCard} >
                             <Card heading='Checkup Types'>
