@@ -1,70 +1,56 @@
 import React, { useState, useEffect } from 'react'
-import AutoCompleteComp from '../../../ui/AutoCompleteComp'
 import dummyRegistrations from '../../../../globalContent/dummyRegistrations'
-import { TextField, Button } from '@material-ui/core'
 import useStyles from './GetPatient.style'
-import Table from '../../../ui/MaterialTable'
+import Select from '../../../ui/Select'
+import TextField from '../../../ui/TextFieldComp'
+import { Button } from '@material-ui/core'
+
 
 const searchTypes = [{ name: 'Name', ref: 'fullName' }, { name: 'CNIC', ref: 'cnic' }, { name: 'Contact', ref: 'contact' }]
-const searchSuggestions = ['Name', 'CNIC', 'Contact']
 
-const GetPatient = ({ getPatient }) => {
-
-    const [registered, setRegistered] = useState()
-    const [searchTypeSelected, setSearchTypeSelected] = useState()
-    const [showRegistered, setShowRegistered] = useState(false)
-    const [patientsArr, setPatientsArr] = useState([])
-    const [showTable, setShowTable] = useState(false)
-
-    const classes = useStyles()
+const GetPatient = ({ getPatients }) => {
+    const [patients, setPatients] = useState([])
+    const [userChoice, setUserChoice] = useState([])
+    const [search, setSearch] = useState()
+    const [results, setResults] = useState([])
     useEffect(() => {
-        setRegistered(dummyRegistrations)
-        const temp = []
-        if (searchTypeSelected) {
-            if (registered) {
-                registered.forEach(patient => {
-                    if (patient[searchTypeSelected.ref] !== '') {
-                        temp.push(patient[searchTypeSelected.ref])
-                        setPatientsArr(temp)
-                    }
+        setPatients(dummyRegistrations)
+        getPatients(results)
+    }, [dummyRegistrations, patients, results])
+    const choiceHandler = choice => {
+        setUserChoice(choice)
+    }
+    const clickSearchHandler = e => {
+        if (search) {
+            const userEntered = search.toLowerCase()
+            e.preventDefault()
+            const temp = [...patients.rows]
+            if (userEntered.length > 0) {
+                const search_results = temp.filter(patient => {
+                    const result = patient[userChoice].toLowerCase()
+                    return result.includes(userEntered)
                 })
-            }
+                setResults(search_results)
+            } else return
         }
-        setShowTable(false)
-    }, [searchTypeSelected])
 
-
-    const selectValueHandler = userChoice => {
-        const temp = searchTypes.find(type => type.name === userChoice)
-        if (temp) {
-            setSearchTypeSelected(temp)
-            setShowRegistered(true)
-        } else {
-            setSearchTypeSelected(null)
-            setShowRegistered(false)
-        }
     }
-
-    const searchClickHandler = e => {
-        e.preventDefault()
-        console.log(e.target, 'clicked')
-        if (!showTable) {
-            setShowTable(true)
-        }
+    const getValueHandler = val => {
+        setSearch(val)
     }
+    const classes = useStyles()
     return (
         <div className={classes.container}>
-            <div style={{ marginBottom: '1rem' }}>
-                <AutoCompleteComp suggestions={searchSuggestions} label="Search By..." onSelect={selectValueHandler} />
-            </div>
-            {console.log(searchTypeSelected)}
-            {searchTypeSelected && (<React.Fragment>
-                <TextField label={`Search by ${searchTypeSelected.name}`} variant="outlined" />
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '1rem' }}>
-                    <Button variant="outlined" color="primary" onClick={searchClickHandler}>Search Patient</Button>
-                </div>
-            </React.Fragment>)}
-            {showTable && <Table />}
+            <Select options={searchTypes} label={'Search By...'} getChoice={choiceHandler} />
+            {userChoice.length > 0 ? (
+                <React.Fragment>
+                    <TextField label={`Enter ${searchTypes.find(type => type.ref === userChoice).name}`} getValue={getValueHandler} />
+                    <div className={classes.BtnContainer}>
+                        <Button variant="outlined" color="primary" onClick={clickSearchHandler}>Search</Button>
+                    </div>
+                </React.Fragment>
+            ) : null}
+
         </div>
     )
 }
