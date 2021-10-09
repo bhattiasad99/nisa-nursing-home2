@@ -1,81 +1,118 @@
+import PropTypes from "prop-types";
 import React, { useState, useEffect } from 'react'
-import data from '../globalContent/dummyRegistrations'
-import { useFormik } from 'formik'
+import { makeStyles, Button, Typography } from "@material-ui/core"
+import TextField from './ui/TextFieldComp'
+import Grid from './ui/Layout/GridComp/GridComp'
+import Select from './ui/Select'
+import formData from '../globalContent/defaultForm'
 
+const useStyles = makeStyles(
+    {
+        root: {
 
-
-const Test = (props) => {
-    const [init, setInit] = useState({})
-    // from props
-
-    const formik = useFormik({
-        initialValues: { ...init }
-    })
-
-    // from props
-    const formData = [
-        {
-            id: 'name',
-            label: 'Name',
-            props: {
-                type: 'text',
-                name: 'name',
-                onChange: formik.handleChange,
-                value: formik.values.name
-            }
         },
-        {
-            props: {
-                type: 'text',
-                name: 'email',
-                id: 'email',
-                label: 'Email',
-                onChange: formik.handleChange,
-                value: formik.values.email
-            }
+        input: {
+            width: '90%'
         },
-        {
-            id: 'contact',
-            label: 'Contact',
+        btn: {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            margin: '1rem auto',
+            width: '7rem',
+        },
 
-            props: {
-                type: 'text',
-                name: 'contact',
-                onChange: formik.handleChange,
-                value: formik.values.contact
-            }
-        }
-    ]
+    }
+)
 
+const Form = ({ name, formData, submit, cancel }) => {
+    const [dynamicValues, setDynamicValues] = useState({})
+
+    const getValueHandler = e => {
+        let temp = { ...dynamicValues }
+        temp[Object.keys(e)[0]] = Object.values(e)[0]
+        setDynamicValues(temp)
+    }
+    const submitBtnHandler = e => {
+        e.preventDefault()
+        console.log(dynamicValues)
+    }
+    const classes = useStyles()
     useEffect(() => {
-        let temp = {}
-        formData.forEach(el => {
+        let temp = { ...dynamicValues }
+        formData.forEach(element => {
             temp = {
                 ...temp,
-                [el.props.name]: ''
+                [element.name]: ''
             }
+            setDynamicValues(temp)
         })
-        setInit(temp)
-    }, [])
-
-
-    const submittedBtnHandler = e => {
-        e.preventDefault()
-        console.log('SUBMITTED', formik.values)
-    }
-
+    }, [formData])
     return (
-        <form onSubmit={submittedBtnHandler}>
-            {console.log(init)}
-            {formData.map(formElement => (
-                <React.Fragment key={formElement.id}>
-                    <label htmlFor={formElement.id}>{formElement.label}</label>
-                    <input {...formElement.props} />
-                </React.Fragment>
-            ))}
-            <button type="submit">hello</button>
+        <form onSubmit={submitBtnHandler} className={classes.root}>
+            <Typography variant="h4">{name}</Typography>
+            <Grid container>
+                {formData.map(element => {
+                    if (element.props.type === 'text' || element.props.type === 'email') {
+                        return (
+                            <Grid xs={6} key={element.name}>
+                                <TextField
+                                    className={classes.input}
+                                    {...element.props}
+                                    getValue={getValueHandler}
+                                />
+                            </Grid>
+                        )
+                    }
+                    if (element.props.type === 'drop-down') {
+                        return (
+                            <Grid xs={6} key={element.name}>
+                                <Select {...element.props} getChoice={getValueHandler} />
+                            </Grid>
+                        )
+                    }
+                })}
+                <Grid item container xs={12}>
+                    <Grid xs={3}>
+                        <Button
+                            variant="outlined"
+                            color="primary"
+                            type="submit"
+                            className={classes.btn}
+                        >
+                            {submit}
+                        </Button>
+                    </Grid>
+                    <Grid xs={3}>
+                        <Button
+                            variant="outlined"
+                            color="primary"
+                            className={classes.btn}
+                        >
+                            {cancel}
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Grid>
         </form>
     )
 }
 
-export default Test
+Form.propTypes = {
+    cancel: PropTypes.any,
+    formData: PropTypes.shape({
+        forEach: PropTypes.func,
+        map: PropTypes.func
+    }),
+    name: PropTypes.string,
+    submit: PropTypes.any
+}
+
+Form.defaultProps = {
+    name: 'No name Given',
+    formData: formData,
+    cancel: 'Cancel',
+    submit: 'Submit',
+}
+
+export default Form

@@ -13,7 +13,6 @@ const Header = (props) => {
     const styles = useStyles()
     const [notifications, setNotifications] = useState(3)
 
-
     return (
         <React.Fragment>
             <AppBar position="fixed">

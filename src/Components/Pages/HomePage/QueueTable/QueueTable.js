@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Table from '../../../ui/MaterialTable'
+import Table from '../../../ui/Table/MaterialTable'
 
 const TABLE_HEADINGS = [
     { title: 'Checkup ID', field: 'checkupId' },

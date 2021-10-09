@@ -1,9 +1,9 @@
 import React from 'react'
 import { makeStyles, Typography } from '@material-ui/core'
-import CardStyle from '../../ui/Card'
+import CardStyle from '../../ui/Layout/Card/Card'
 import TextFieldWithIcon from '../../ui/TextFieldWithIcon'
 import PasswordInput from '../../ui/PasswordInput'
-import BtnList from '../../ui/BtnList'
+import BtnList from '../../ui/BtnList/BtnList'
 import { useHistory } from 'react-router-dom'
 
 const useStyles = makeStyles({

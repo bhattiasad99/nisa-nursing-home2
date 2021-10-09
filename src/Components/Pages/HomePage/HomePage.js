@@ -1,7 +1,7 @@
 import React from 'react'
-import Card from '../../ui/Card'
+import Card from '../../ui/Layout/Card/Card'
 import useStyles from './HomePage.styles.js'
-import Grid from '../../ui/GridComp/GridComp'
+import Grid from '../../ui/Layout/GridComp/GridComp'
 
 import APPOINTMENTS from '../../../globalContent/DummyPatients'
 

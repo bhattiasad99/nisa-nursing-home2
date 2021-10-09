@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import TinyButtons from '../../../ui/TinyButtons'
 import { Typography, makeStyles } from '@material-ui/core'
-import Doughnut from '../../../ui/Doughnut'
+import Doughnut from '../../../ui/Charts/Doughnut'
 
 const useStyles = makeStyles({})
 

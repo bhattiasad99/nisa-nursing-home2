@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -11,21 +12,38 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function BasicTextFields({ label, getValue }) {
+export default function BasicTextFields({ label, id, getValue, ...otherProps }) {
     const [value, setValue] = useState()
+    const [extract, setExtract] = useState({})
     useEffect(() => {
-        console.log(value)
         // used useeffect for within change render (instead of in onchange function)
-        getValue(value)
+        getValue(extract)
+
     }, [value])
     const changeValHandler = e => {
         setValue(e.target.value)
+
+        let temp = {}
+        temp = {
+            [e.target.id]: e.target.value
+        }
+        setExtract(temp)
     }
     const classes = useStyles();
 
     return (
         <form className={classes.root} noValidate autoComplete="off">
-            <TextField id="outlined-basic" label={label} value={value} variant="outlined" onChange={changeValHandler} />
+            <TextField {...otherProps} id={id} label={label} value={value} variant="outlined" onChange={changeValHandler} />
         </form>
     );
+}
+
+BasicTextFields.propTypes = {
+    getValue: PropTypes.func,
+    label: PropTypes.any
+}
+
+BasicTextFields.defaultProps = {
+    getValue: (e) => { console.log(e) },
+    label: 'no label given'
 }

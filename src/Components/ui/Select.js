@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -14,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function NativeSelects({ options, label, getChoice }) {
+export default function NativeSelects({ options, label, getChoice, ...otherProps }) {
     const classes = useStyles();
     const [userChoice, setUserChoice] = React.useState('')
     const handleChange = (event) => {
@@ -28,6 +29,7 @@ export default function NativeSelects({ options, label, getChoice }) {
             <FormControl variant="outlined" className={classes.formControl} style={{ width: '10rem' }}>
                 <InputLabel htmlFor="outlined-age-native-simple">{label}</InputLabel>
                 <Select
+                    {...otherProps}
                     native
                     value={userChoice}
                     onChange={handleChange}
@@ -45,4 +47,17 @@ export default function NativeSelects({ options, label, getChoice }) {
             </FormControl>
         </div>
     );
+}
+NativeSelects.propTypes = {
+    getChoice: PropTypes.func,
+    label: PropTypes.any,
+    options: PropTypes.shape({
+        map: PropTypes.func
+    })
+}
+
+NativeSelects.defaultProps = {
+    getChoice: (e) => { console.log(e) },
+    options: [{ name: 'no name', ref: 'id' }, { name: 'no other', ref: 'id of no' }],
+    label: 'no label given'
 }

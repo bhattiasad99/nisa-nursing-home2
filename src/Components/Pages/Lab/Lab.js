@@ -1,6 +1,6 @@
 import React from 'react'
 import useStyles from './Lab.styles.js'
-import Card from '../../ui/Card'
+import Card from '../../ui/Layout/Card/Card'
 
 const Lab = (props) => {
     const classes = useStyles()

@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import Card from '../../../ui/Card'
+import Card from '../../../ui/Layout/Card/Card'
 import useStyles from './GetAppointment.style'
 import GetPatient from './GetPatient'
 import PatientInfo from './PatientInfo'
 
-import Grid from '../../../ui/GridComp/GridComp'
-import Table from '../../../ui/MaterialTable'
+import Grid from '../../../ui/Layout/GridComp/GridComp'
+import Table from '../../../ui/Table/MaterialTable'
 import { Typography, Button } from '@material-ui/core'
 
 import Registration from '../../NewPatient/Registration/Registration'
-import BackDrop from '../../../ui/BackDropComp'
+import BackDrop from '../../../ui/BackDrop/BackDropComp'
 import SetAppointment from '../SetAppointment/SetAppointment'
 
 const headings = [

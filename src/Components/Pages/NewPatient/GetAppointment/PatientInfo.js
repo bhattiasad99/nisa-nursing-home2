@@ -18,7 +18,6 @@ const useStyles = makeStyles({
 
 const PatientInfo = ({ patient }) => {
     const classes = useStyles()
-    console.log(patient)
     return (
         <div className={classes.root}>
             {patient && refs.map(reference => (

@@ -5,7 +5,6 @@ import { useStyles } from './GridComp.styles';
 
 export default function CenteredGrid({ children, bgColor, xsSize, item, styles, ...props }) {
     const classes = useStyles(bgColor)();
-    console.log(styles)
     return (
         <Grid
             {...props}

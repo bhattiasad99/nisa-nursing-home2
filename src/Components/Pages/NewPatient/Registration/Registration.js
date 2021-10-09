@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import Card from '../../../ui/Card'
+import Card from '../../../ui/Layout/Card/Card'
 import form_data from './form_data'
 import useStyles from './Registration.style'
 import TextField from '@material-ui/core/TextField';
 import Form from '../../../ui/Form'
 import DropDown from '../../../ui/DropDown'
-import BtnList from '../../../ui/BtnList'
+import BtnList from '../../../ui/BtnList/BtnList'
 import { useHistory } from 'react-router-dom'
 
 

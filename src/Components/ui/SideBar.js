@@ -33,7 +33,8 @@ const useStyles = makeStyles((theme) => ({
     drawerPaper: {
         width: drawerWidth,
         background: 'white',
-        color: 'black'
+        color: 'black',
+        overflow: 'hidden',
     },
     toolbar: theme.mixins.toolbar,
 
@@ -85,8 +86,7 @@ function SideDrawer(props) {
                     </ListItem>
                 ))}
             </List>
-            <Divider />
-            <Switch result={changeThemeHandler} />
+
         </div >
     );
 
